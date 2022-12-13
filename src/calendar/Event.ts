@@ -11,6 +11,7 @@ export interface Event {
     description?: string
     built_in: boolean
     expand?: ExpandData
+    color: string
 }
 
 export interface PlacedEvent {

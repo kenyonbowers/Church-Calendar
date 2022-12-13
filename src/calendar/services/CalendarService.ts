@@ -8,6 +8,10 @@ export async function getChurchEvents(startDate:Date, endDate:Date, churchID:str
     return await transformEventResponses(records);
 }
 
+export async function getAvailableEvents(churchID:string){
+    return await PocketBaseClient.collection("events").getFullList(200, { filter: `church.id = "${churchID}" || built_in = true` });
+}
+
 export const getPlacedEvent = async (id: string) => {
     const response = await PocketBaseClient.collection("placed_events").getOne(id, {})
     return transformEventResponse(response)

@@ -10,5 +10,5 @@ app.mount('#app')
 //import { App } from '@capacitor/app';
 
 /*App.addListener('backButton', data => {
-    window.history.back()
+    window.history.back();
 })*/
