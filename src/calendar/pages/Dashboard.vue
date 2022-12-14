@@ -5,7 +5,7 @@
             <CalendarSlot v-for="i in 31" :index="i" :date="i" color="000000" @click="openEditorWithData($event);" :events="Events[i]"></CalendarSlot>
         </div>
     </div>
-    <EventEditorFooter :d="Day || 1" :m="Month || 1" :y="2022" v-if="IsAdmin" @update:model-value="setEvents($event)"></EventEditorFooter>
+    <EventEditorFooter :d="Day || 1" :m="Month || 1" :y="2022" v-if="IsAdmin" :events="Events[Day||1-1]" @update:model-value="setEvents($event)"></EventEditorFooter>
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
@@ -21,6 +21,11 @@ const Events = ref<Array<string>[]>([
 const IsAdmin = ref(true);
 const Day = ref<number>();
 const Month = ref<number>();
+
+setInterval(function(){
+    console.log(Day.value)
+    console.log(Events.value[Day.value||0])
+}, 1000)
 
 onMounted(async() => {
     var church = await getChurch("nnnnzpxkul7wvh4");

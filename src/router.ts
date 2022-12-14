@@ -8,20 +8,11 @@ import * as VueRouter from 'vue-router'
 
 const routes = [
   // Home
-  { path: '/', component: Home },
+  { path: '/', component: Dashboard },
 
   // Calendar
   { path: '/dashboard', component: Dashboard },
 ]
-
-let webHistory:any;
-
-if(process.env.IS_ELECTRON == "false"){
-  webHistory = VueRouter.createWebHistory();
-}
-else if(process.env.IS_ELECTRON == "true"){
-  webHistory = VueRouter.createWebHashHistory();
-}
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHistory(),

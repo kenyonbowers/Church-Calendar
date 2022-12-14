@@ -4,6 +4,7 @@
         <AppSelect placeholder="Choose..." @update:model-value="setEventsForDay($event)">
             <option v-for="index in records" :key="index" :value="index.value">{{ index.name }}</option>
         </AppSelect>
+        {{ props.events }}
     </div>
 </template>
 
@@ -17,11 +18,16 @@ export interface EventEditorProps {
     d: number
     m: number
     y: number
+    events: string[]
     modelValue?: string
 }
 const props = withDefaults(defineProps<EventEditorProps>(), {
    
 })
+
+setInterval(function(){
+    console.log(props.events)
+}, 1000)
 
 const records = ref<any>([]);
 onMounted(async() => {
